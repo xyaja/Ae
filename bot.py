@@ -16,9 +16,9 @@ async def send_photo(client, message):
       [InlineKeyboardButton("DANA", callback_data="dana")]
     ])
 
-await message_reply(
-  "p",
-  reply_Markup=keyboard 
+#await message_reply(
+ # "p",
+ # reply_Markup=keyboard 
 )
 
 @app.on_callback_query()
