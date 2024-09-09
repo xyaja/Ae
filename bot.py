@@ -19,7 +19,7 @@ async def send_photo(client, message):
 #await message_reply(
  # "p",
  # reply_Markup=keyboard 
-)
+#)
 
 @app.on_callback_query()
 async def callback_query(client, callback_query):
