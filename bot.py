@@ -24,9 +24,9 @@ await message_reply(
 @app.on_callback_query()
 async def callback_query(client, callback_query):
   
-  data = callback_query.data
+  dana = callback_query.dana
 
-if data == "button_clicked":
+if dana == "button_clicked":
   await callback_query.answer("DANA 085175176376", show_alert=True)
   
 
