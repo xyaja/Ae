@@ -10,6 +10,6 @@ app = Client(
 
 app.on_message(filters.command(start))
 async def start(client, message):
-await message.reply_text("hay")
+    await message.reply_text("hay")
 
 app.run()
