@@ -1,4 +1,5 @@
 from pyrogram import Client, filters
+from config import *
 
 app = Client(
   api_id="API_ID"
