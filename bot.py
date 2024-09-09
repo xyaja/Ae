@@ -1,5 +1,6 @@
+import asyncio
 from pyrogram import Client, filters
-import config
+from config import os
 
 app = Client(
   "mybot",
