@@ -18,10 +18,11 @@ async def send_photo(client, message):
 
 @app.on_callback_query()
 async def callback_query(client, callback_query):
+  
   data = callback_query.data
 
 if data == "button_clicked":
-  await callback_query.answer("DANA 085175176376")
+  await callback_query.answer("DANA 085175176376", show_alert=True)
   
 
 app.run()
