@@ -1,6 +1,6 @@
 import asyncio
 from pyrogram import Client, filters
-from config import os
+from config import API_ID, API_HASH, BOT_TOKEN
 
 app = Client(
   "mybot",
