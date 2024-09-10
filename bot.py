@@ -27,5 +27,5 @@ async def send_photo(client, message):
 async def callback_query(client, callback_query):
   await callback_query.message.reply_text("DANA 085175176376")
   
-if __name__="__main__":
+if __name__=="__main__":
 app.run()
