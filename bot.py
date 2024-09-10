@@ -11,13 +11,15 @@ app = Client(
 )
 
 @app.on_message(filters.command("start") & filters.private)
-async def send_photo(client, message, photo="qris.jpg", caption="tes"):
-
+async def send_photo(client, message):
+    photo = "qris.jpg"
+    caption = "tes"
 
     keyboard = InlineKeyboardMarkup([
       [InlineKeyboardButton("DANA", callback_data="dana")]
     ])
 
+    try:
 await client.send_photo(message.chat.id, photo, caption=caption, reply_markup=keyboard)
 
 @app.on_callback_query(filters.regex("dana"))
