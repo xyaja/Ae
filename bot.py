@@ -4,12 +4,13 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from config import API_ID, API_HASH, BOT_TOKEN, OWNER
 from database.database import add_user, del_user, full_userbase, present_user 
 
+OWNER = "config.OWNER"
+
 app = Client(
   "mybot",
   api_id=API_ID,
   api_hash=API_HASH,
   bot_token=BOT_TOKEN,
-  owner=OWNER
 )
 
 @app.on_message(filters.command("start") & filters.private & filters.user(OWNER))
