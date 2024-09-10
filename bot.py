@@ -12,7 +12,7 @@ app = Client(
   bot_token=BOT_TOKEN,
 )
 
-OWMER_ID = OWNER
+OWNER_ID = OWNER
 
 @app.on_message(filters.user("p") & filters.private & filters.command(OWNER))
 async def send_photo(client, message):
