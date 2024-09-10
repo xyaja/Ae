@@ -29,7 +29,7 @@ async def send_photo(client, message):
 async def callback_query(client, callback_query):
   await callback_query.message.reply_text("DANA 085175176376")
 
-@app.on_message(filters.command('users') & filters.private & filters.user(OWNER))
+@app.on_message(filters.command('users') & filters.private & filters.user("OWNER"))
 async def get_users(client: app, message):
     msg = await client.send_message(chat_id=message.chat.id, text=WAIT_MSG)
     users = await full_userbase()
