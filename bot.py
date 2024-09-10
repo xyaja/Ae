@@ -36,7 +36,7 @@ async def get_users(client: app, message):
     users = await full_userbase()
     await msg.edit(f"{len(users)} users are using this bot")
 
-@app.on_message(filters.private & filters.command('broadcast') & filters.user(OWNER))
+@app.on_message(filters.private & filters.command('broadcast') & filters.user(config.OWNER))
 async def send_text(client: app, message):
     if message.reply_to_message:
         query = await full_userbase()
