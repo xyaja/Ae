@@ -14,7 +14,7 @@ app = Client(
 async def send_image(client, message):
 
 photo = "qris.jpg"
-caption = ""
+caption = "tes"
 
     keyboard = InlineKeyboardMarkup([
       [InlineKeyboardButton("DANA", callback_data="dana")]
