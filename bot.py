@@ -11,7 +11,7 @@ app = Client(
 )
 
 @app.on_message(filters.command("start") & filters.private)
-async def send_photo(client, message, chat.id, qris.jpg, caption=tes):
+async def send_photo(client, message, qris.jpg, caption=tes):
 
     keyboard = InlineKeyboardMarkup([
       [InlineKeyboardButton("DANA", callback_data="dana")]
