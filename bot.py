@@ -20,8 +20,9 @@ async def send_photo(client, message):
     ])
 
     try:
-await client.send_photo(message.chat.id, photo, caption=caption, reply_markup=keyboard)
-
+        await client.send_photo(message.chat.id, photo, caption=caption, reply_markup=keyboard)
+    except Exception as e:
+        await message.reply_text(f"eror send photo: {e}")
 @app.on_callback_query(filters.regex("dana"))
 async def callback_query(client, callback_query):
   await callback_query.message.reply_text("DANA 085175176376")
