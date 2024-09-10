@@ -26,5 +26,5 @@ await client.send_photo(message.chat.id, photo, caption=caption, reply_markup=ke
 async def callback_query(client, callback_query):
   await callback_query.message.reply_text("DANA 085175176376")
   
-
+if __name__="__main__":
 app.run()
