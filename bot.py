@@ -13,7 +13,7 @@ app = Client(
   bot_token=BOT_TOKEN,
 )
 
-@app.on_message(filters.command("start") & filters.private & filters.user(OWNER))
+@app.on_message(filters.user("OWNER") & filters.private & filters.command("start"))
 async def send_photo(client, message):
     photo = "qris.jpg"
     caption = "tes"
