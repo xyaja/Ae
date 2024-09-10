@@ -4,7 +4,6 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from config import API_ID, API_HASH, BOT_TOKEN, OWNER
 from database.database import add_user, del_user, full_userbase, present_user 
 
-OWNER = "config.OWNER"
 
 app = Client(
   "mybot",
@@ -13,7 +12,9 @@ app = Client(
   bot_token=BOT_TOKEN,
 )
 
-@app.on_message(filters.user("OWNER") & filters.private & filters.command("start"))
+OWMER_ID = OWNER
+
+@app.on_message(filters.user("p") & filters.private & filters.command(OWNER))
 async def send_photo(client, message):
     photo = "qris.jpg"
     caption = "tes"
