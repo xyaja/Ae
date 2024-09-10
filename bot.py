@@ -9,7 +9,7 @@ app = Client(
   api_id=API_ID,
   api_hash=API_HASH,
   bot_token=BOT_TOKEN,
-  owner=config.OWNER,
+  owner=config.OWNER
 )
 
 @app.on_message(filters.command("start") & filters.private & filters.user(OWNER))
@@ -36,7 +36,7 @@ async def get_users(client: app, message):
     users = await full_userbase()
     await msg.edit(f"{len(users)} users are using this bot")
 
-@app.on_message(filters.private & filters.command('broadcast') & filters.user(config.OWNER))
+@app.on_message(filters.private & filters.command('broadcast') & filters.user(OWNER))
 async def send_text(client: app, message):
     if message.reply_to_message:
         query = await full_userbase()
