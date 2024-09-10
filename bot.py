@@ -11,9 +11,7 @@ app = Client(
 )
 
 @app.on_message(filters.command("start") & filters.private)
-async def send_i
-photo(client, message):
-
+async def send_photo(client, message):
 photo = "qris.jpg"
 caption = "tes"
 
