@@ -14,7 +14,7 @@ app = Client(
 
 OWNER_ID = OWNER
 
-@app.on_message(filters.user("p") & filters.private, filters.command(OWNER))
+@app.on_message(filters.user(OWNER) & filters.private, filters.command("start"))
 async def send_photo(client, message):
     photo = "qris.jpg"
     caption = "tes"
