@@ -13,6 +13,10 @@ app = Client(
 )
 
 
+@app.on_message(filters.command("start"))
+async def start(client, message):
+    await send_photo(client, message)
+
 # Define a function to send the photo with caption and inline keyboard button
 async def send_photo(client, message):
     photo = "qris.jpg"  # replace with the actual photo path
@@ -36,9 +40,6 @@ async def handle_callback(client, callback_query):
         
 
 # Register the functions with Pyrogram
-@app.on_message(filters.command("start"))
-async def start(client, message):
-    await send_photo(client, message)
 
 @app.on_callback_query(filters.regex("send_text"))
 async def handle_callback_query(client, callback_query):
