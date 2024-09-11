@@ -31,8 +31,8 @@ async def handle_callback(client, callback_query):
         ])
         await callback_query.message.reply_text(text, reply_markup=keyboard)
     elif callback_query.data == "go_back":
-        await callback_query.message.delete()
         await send_photo(client, callback_query.message)
+        await callback_query.message.delete()
 
 # Register the functions with Pyrogram
 @app.on_message(filters.command("start"))
