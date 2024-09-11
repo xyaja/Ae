@@ -13,36 +13,33 @@ app = Client(
 )
 
 
-@app.on_message(filters.command("start") & filters.private)
 async def send_photo(client, message):
-    photo = "qris.jpg"
-    caption = "tes"
-
+    photo = "path/to/photo.jpg"  # replace with the actual photo path
+    caption = "This is a sample photo"
     keyboard = InlineKeyboardMarkup([
-      [InlineKeyboardButton("DANA", callback_data="dana")]
+        [InlineKeyboardButton("Send Text", callback_data="send_text")]
     ])
+    await client.send_photo(message.chat.id, photo, caption=caption, reply_markup=keyboard)
 
-    try:
-        await client.send_photo(message.chat.id, photo, caption=caption, reply_markup=keyboard)
-    except Exception as e:
-        await message.reply_text(f"eror send photo: {e}")
-      
-@app.on_callback_query(filters.regex("dana"))
-async def dana_callback_query(client, message):
-    await query.answer("Anda telah memilih metode pembayaran DANA.")
-    
- #   nomor tujuan = 085175176376
-  #  atas nama = CAS****H
+# Define a function to handle the inline keyboard button callback
+async def handle_callback(client, callback_query):
+    if callback_query.data == "send_text":
+        text = "This is a sample text"
+        keyboard = InlineKeyboardMarkup([
+            [InlineKeyboardButton("Go Back", callback_data="go_back")]
+        ])
+        await callback_query.message.reply_text(text, reply_markup=keyboard)
+    elif callback_query.data == "go_back":
+        await callback_query.message.reply_text("You are back!")
 
-    reply_markup = InlineKeyboardMarkup(
-        [
-            [
-                InlineKeyboardButton(
-                    "KEMBALI", callback_data="dana"
-                ),
-            ]
-        ]
-    )
+# Register the functions with Pyrogram
+@app.on_message(filters.command("start"))
+async def start(client, message):
+    await send_photo(client, message)
 
-if __name__=="__main__":
-   app.run()
+@app.on_callback_query(filters.regex("send_text|go_back"))
+async def handle_callback_query(client, callback_query):
+    await handle_callback(client, callback_query)
+
+# Run the Pyrogram client
+app.run()
