@@ -13,8 +13,9 @@ app = Client(
 )
 
 
+# Define a function to send the photo with caption and inline keyboard button
 async def send_photo(client, message):
-    photo = "qris.jpg"  # replace with the actual photo path
+    photo = "path/to/photo.jpg"  # replace with the actual photo path
     caption = "This is a sample photo"
     keyboard = InlineKeyboardMarkup([
         [InlineKeyboardButton("Send Text", callback_data="send_text")]
@@ -30,7 +31,8 @@ async def handle_callback(client, callback_query):
         ])
         await callback_query.message.reply_text(text, reply_markup=keyboard)
     elif callback_query.data == "go_back":
-        await callback_query.message.reply_text("You are back!")
+        await callback_query.message.delete()
+        await send_photo(client, callback_query.message)
 
 # Register the functions with Pyrogram
 @app.on_message(filters.command("start"))
