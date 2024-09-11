@@ -14,7 +14,7 @@ app = Client(
 
 
 async def send_photo(client, message):
-    photo = "path/to/photo.jpg"  # replace with the actual photo path
+    photo = "qris.jpg"  # replace with the actual photo path
     caption = "This is a sample photo"
     keyboard = InlineKeyboardMarkup([
         [InlineKeyboardButton("Send Text", callback_data="send_text")]
