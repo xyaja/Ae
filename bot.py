@@ -15,7 +15,7 @@ app = Client(
 
 @app.on_message(filters.command("start"))
 async def start(client, message):
-    await send_photo(qris.jpg, caption=tes)
+    start send_photo(qris.jpg, caption=tes)
     
 
 app.run()
