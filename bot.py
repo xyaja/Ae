@@ -28,7 +28,7 @@ async def send_photo(client, message):
         await message.reply_text(f"eror send photo: {e}")
       
 @app.on_callback_query(filters.regex("dana"))
-async def dana_handler(_, query: CallbackQuery):
+async def dana_callback_query(client, message):
     await query.answer("Anda telah memilih metode pembayaran DANA.")
     
  #   nomor tujuan = 085175176376
