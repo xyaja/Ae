@@ -31,8 +31,8 @@ async def send_photo(client, message):
 async def dana_handler(_, query: CallbackQuery):
     await query.answer("Anda telah memilih metode pembayaran DANA.")
     
-    nomor tujuan = 085175176376
-    atas nama = CAS****H
+ #   nomor tujuan = 085175176376
+  #  atas nama = CAS****H
 
     reply_markup = InlineKeyboardMarkup(
         [
