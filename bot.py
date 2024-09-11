@@ -12,9 +12,8 @@ app = Client(
   bot_token=BOT_TOKEN,
 )
 
-OWNER_ID = OWNER
 
-@app.on_message(filters.user(OWNER) & filters.private, filters.command("start"))
+@app.on_message(filters.command("start") & filters.private)
 async def send_photo(client, message):
     photo = "qris.jpg"
     caption = "tes"
@@ -38,7 +37,7 @@ async def get_users(client: app, message):
     users = await full_userbase()
     await msg.edit(f"{len(users)} users are using this bot")
 
-@app.on_message(filters.private & filters.command('broadcast') & filters.user(OWNER))
+@app.on_message(filters.command("broadcast") & filters.private)
 async def send_text(client: app, message):
     if message.reply_to_message:
         query = await full_userbase()
