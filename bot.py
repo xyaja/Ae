@@ -2,8 +2,7 @@ import asyncio
 from pyrogram import Client, filters
 from pyrogram.raw import functions, types
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-from config import API_ID, API_HASH, BOT_TOKEN, OWNER
-from database.database import add_user, del_user, full_userbase, present_user 
+from config import API_ID, API_HASH, BOT_TOKEN, OWNER 
 
 
 app = Client(
