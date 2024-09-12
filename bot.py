@@ -12,31 +12,24 @@ app = Client(
   bot_token=BOT_TOKEN,
 )
 
-button1 = [
-    [
-        InlineKeyboardButton("DANA", callback_data="dana")
-    ]
-]
-button2 = [
-    [
-        InlineKeyboardButton("GOPAY", callback_data="gopay")
-    ]
-]
+@app.on_message(filters.command("start"))
+async def send_photo_with_button(client, message):
+    # 2.1. Buat tombol inline
+    button = InlineKeyboardButton("Klik Saya!", callback_data="dana")
+    keyboard = InlineKeyboardMarkup([[button]])
 
-@app.on_message(filters.command("start") & filters.private)
-async def start_command(client, message):
-            await message.reply_photo(
-            photo="qris.jpg",
-            caption="TES",
-            reply_markup="button1",
-            reply_markup="button2"
-         )
-    
+    # 2.2. Balas dengan foto dan tombol
+    await message.reply_photo(
+        photo="path/to/your/photo.jpg",  # Ganti dengan path ke foto Anda
+        caption="Ini adalah caption foto dengan tombol.",
+        reply_markup=keyboard
+    )
+
 app.on_callback_query()
 async def handle_callback_query( client, query):
     if query.data == "dana":
         await query.answer("085175176376")
-    elif query.data == "gopay":
-         await query.answer("085175176376")
+    #elif query.data == "gopay":
+        # await query.answer("085175176376")
 
 app.run()
