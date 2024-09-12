@@ -23,7 +23,7 @@ async def start_command(client, message):
 
 class keyboard:
     def __init__(button1, button2, keyboard):
-button1 = InlineKeyboardButton("DANA", callback_data="dana")
+    button1 = InlineKeyboardButton("DANA", callback_data="dana")
     button2 = InlineKeyboardButton("GOPAY", callback_data="gopay")
     keyboard = InlineKeyboardButton([[button1, button2]])
     
