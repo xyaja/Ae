@@ -2,7 +2,7 @@ import asyncio
 from pyrogram import Client, filters
 from pyrogram.raw import functions, types
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-from config import API_ID, API_HASH, BOT_TOKEN, OWNER 
+from config import API_ID, API_HASH, BOT_TOKEN
 
 
 app = Client(
@@ -13,9 +13,9 @@ app = Client(
 )
 
 
-@app.on_message(filters.command("start"))
-    def start_command(client, message):
-    message.reply_text("tes")
+@app.on_message(filters.command("start") & filters.private)
+    async def start(client, message):
+        message.reply_text(test)
     
 
 app.run()
