@@ -12,7 +12,7 @@ app = Client(
   bot_token=BOT_TOKEN,
 )
 
-@app.on_message(filters.command(start))
+@app.on_message(filters.command("start"))
 async def start(client,message):
     photo = "qris.jpg"
     caption = "test"
