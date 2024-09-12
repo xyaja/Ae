@@ -21,7 +21,6 @@ keyboard = InlineKeyboardButton([[button1, button2]])
 @app.on_message(filters.command("start") & filters.private)
 async def start_command(client, message):
             await message.reply_photo(
-            chat_id=message.chat.id
             photo="qris.jpg",
             caption="TES",
             reply_markup=keyboard
