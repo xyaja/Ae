@@ -12,18 +12,14 @@ app = Client(
   bot_token=BOT_TOKEN,
 )
 
-@app.on_message(filters.command("start"))
-async def send_photo_with_button(client, message):
-    # 2.1. Buat tombol inline
-    button = InlineKeyboardButton("Klik Saya!", callback_data="dana")
-    keyboard = InlineKeyboardMarkup([[button]])
-
-    # 2.2. Balas dengan foto dan tombol
-    await message.reply_photo(
-        photo="qris.jpg",  # Ganti dengan path ke foto Anda
-        caption="Ini adalah caption foto dengan tombol.",
-        reply_markup=keyboard
-    )
+@app.on_message(filter.command(start))
+async def start(client,message):
+    photo = "qris.jpg"
+    caption = "test"
+    button = InlineKeyboardMarkup([
+    [InlineKeyboardButton("DANA", callback_data="dana")]
+    ])
+    await send_photo(photo, caption=caption, raply_markup=keyboard)
 
 app.on_callback_query()
 async def handle_callback_query( client, query):
