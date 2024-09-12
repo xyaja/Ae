@@ -19,7 +19,7 @@ async def start(client,message):
     button = InlineKeyboardMarkup([
     [InlineKeyboardButton("DANA", callback_data="dana")]
     ])
-    await send_photo(photo, caption=caption, raply_markup=keyboard)
+        await send_photo(photo, caption=caption, raply_markup=keyboard)
 
 app.on_callback_query()
 async def handle_callback_query( client, query):
