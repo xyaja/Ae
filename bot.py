@@ -20,7 +20,7 @@ async def send_photo_with_button(client, message):
 
     # 2.2. Balas dengan foto dan tombol
     await message.reply_photo(
-        photo="path/to/your/photo.jpg",  # Ganti dengan path ke foto Anda
+        photo="qris.jpg",  # Ganti dengan path ke foto Anda
         caption="Ini adalah caption foto dengan tombol.",
         reply_markup=keyboard
     )
