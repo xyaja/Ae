@@ -14,7 +14,7 @@ app = Client(
 
 
 @app.on_message(filters.command("start"))
-async def start(client, message):
+    def start_command(client, message):
     message.reply_text("tes")
     
 
