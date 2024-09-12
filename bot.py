@@ -13,7 +13,7 @@ app = Client(
 )
 
 
-@app.on_message_sendMedia(filters.command("start"))
+@app.on_message(filters.command("start"))
 async def start(client, message):
     message.reply_text("tes")
     
