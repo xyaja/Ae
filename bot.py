@@ -19,7 +19,7 @@ def start(client, message):
     
     # Kirim foto dengan caption dan tombol
     message.reply_photo(
-        photo="https://www.example.com/your_photo.jpg",  # Ganti dengan URL foto yang diinginkan
+        photo="qris.jpg",  # Ganti dengan URL foto yang diinginkan
         caption="Ini adalah caption foto.",
         reply_markup=InlineKeyboardMarkup(buttons)
     )
@@ -47,14 +47,14 @@ def callback_query(client, callback_query):
     elif data == "button3":
         # Menampilkan foto dengan caption dan tombol "Back"
         callback_query.message.edit_photo(
-            photo="https://www.example.com/another_photo.jpg",  # Ganti dengan URL foto yang diinginkan
+            photo="qris.jpg",  # Ganti dengan URL foto yang diinginkan
             caption="Ini adalah caption foto kedua.\n\n[Back](https://t.me/your_bot_username?start)",
             reply_markup=InlineKeyboardMarkup([[back_button]])
         )
     elif data == "back":
         # Kembali ke pesan utama
         callback_query.message.edit_photo(
-            photo="https://www.example.com/your_photo.jpg",  # URL foto utama
+            photo="qris.jpg",  # URL foto utama
             caption="Ini adalah caption foto.",
             reply_markup=InlineKeyboardMarkup([
                 [InlineKeyboardButton("Button 1", callback_data="button1")],
