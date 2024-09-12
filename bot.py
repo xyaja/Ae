@@ -29,6 +29,6 @@ async def handle_callback_query( client, query):
     if query.data == "dana":
         await query.answer("085175176376")
     elif query.data == "gopay"
-         await query.answer("085175176376")
+         await query.answer("085175176376 :(")
 
 app.run()
