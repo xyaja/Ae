@@ -16,12 +16,12 @@ app = Client(
 @app.on_message(filters.command("start") & filters.private)
 async def start_command(client, message):
     button1 = InlineKeyboardButton("DANA", callback_data="dana")
-button2 = InlineKeyboardButton("GOPAY", callback_data="gopay")
-keyboard = InlineKeyboardButton([[button1, button2]])
-    await message.reply_photo(
-    photo="qris.jpg",
-    caption="TES",
-    reply_markup=keyboard
+    button2 = InlineKeyboardButton("GOPAY", callback_data="gopay")
+    keyboard = InlineKeyboardButton([[button1, button2]])
+        await message.reply_photo(
+        photo="qris.jpg",
+        caption="TES",
+        reply_markup=keyboard
 )
     
 app.on_callback_query()
