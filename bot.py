@@ -17,8 +17,18 @@ app = Client(
 async def start_command(client, message):
     await message.reply_photo(
     photo="qris.jpg",
-    caption="TES"
+    caption="TES",
+    reply_markup=keyboard
 )
     
+button1 = InlineKeyboardButton("DANA", callback_data="dana")
+button2 = InlineKeyboardButton("GOPAY", callback_data="gopay")
+
+app.on_callback_query()
+async def handle_callback_query( client, query):
+    if query.data == "dana":
+        await query.answer("085175176376")
+    elif query.data == "gopay"
+         await query.answer("085175176376")
 
 app.run()
