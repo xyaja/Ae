@@ -25,8 +25,8 @@ async def start_command(client, message):
             await message.reply_photo(
             photo="qris.jpg",
             caption="TES",
-            reply_markup = InlineKeyboardMarkup(button1),
-            reply_markup = InlineKeyboardMarkup(button2)
+            reply_markup="InlineKeyboardMarkup(button1)",
+            reply_markup="InlineKeyboardMarkup(button2)"
          )
     
 app.on_callback_query()
