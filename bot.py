@@ -17,8 +17,11 @@ button1 = [
         InlineKeyboardButton("DANA", callback_data="dana")
     ]
 ]
-button2 = InlineKeyboardButton("GOPAY", callback_data="gopay")
-
+button2 = [
+    [
+        InlineKeyboardButton("GOPAY", callback_data="gopay")
+    ]
+]
 
 @app.on_message(filters.command("start") & filters.private)
 async def start_command(client, message):
