@@ -12,10 +12,12 @@ app = Client(
   bot_token=BOT_TOKEN,
 )
 
-button1 = InlineKeyboardButton("DANA", callback_data="dana")
+button1 = [
+    [
+        InlineKeyboardButton("DANA", callback_data="dana")
+    ]
+]
 button2 = InlineKeyboardButton("GOPAY", callback_data="gopay")
-
-keyboard = InlineKeyboardButton([[button1, button2]])
 
 
 @app.on_message(filters.command("start") & filters.private)
@@ -23,7 +25,8 @@ async def start_command(client, message):
             await message.reply_photo(
             photo="qris.jpg",
             caption="TES",
-            reply_markup=keyboard
+            reply_markup = InlineKeyboardMarkup(button1),
+            reply_markup = InlineKeyboardMarkup(button2)
          )
     
 app.on_callback_query()
