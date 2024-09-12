@@ -14,7 +14,7 @@ app = Client(
 
 
 @app.on_message(filters.command("start") & filters.private)
-    async def start(client, message):
+    async def start_command(client, message):
        await message_reply("test")
     
 
