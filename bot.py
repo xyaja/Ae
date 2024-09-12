@@ -12,6 +12,7 @@ app = Client(
   bot_token=BOT_TOKEN,
 )
 
+keyboard = InlineKeyboardButton([[button1, button2]])
 
 @app.on_message(filters.command("start") & filters.private)
 async def start_command(client, message):
