@@ -1,4 +1,4 @@
-# main.py
+id# main.py
 
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
@@ -7,58 +7,61 @@ import config
 
 app = Client("my_bot", api_id=config.API_ID, api_hash=config.API_HASH, bot_token=config.BOT_TOKEN)
 
+# Fungsi untuk mengirim pesan utama dengan foto dan tombol
 @app.on_message(filters.command('start'))
 def start(client, message):
-    welcome_message = "Selamat datang! Gunakan /help untuk melihat perintah yang tersedia."
-    help_button = InlineKeyboardButton("Help", callback_data="help")
-    reply_markup = InlineKeyboardMarkup([[help_button]])
-    message.reply_text(welcome_message, reply_markup=reply_markup)
-
-@app.on_message(filters.command('help'))
-def help(client, message):
-    help_text = (
-        "/ch <keyword> <channel_id> - Mengatur channel sumber untuk forwarding dengan kunci tertentu\n"
-        "/addch <keyword> <channel_id> - Menambahkan channel tujuan untuk forwarding dengan kunci tertentu"
+    buttons = [
+        [InlineKeyboardButton("Button 1", callback_data="button1")],
+        [InlineKeyboardButton("Button 2", callback_data="button2")],
+        [InlineKeyboardButton("Button 3", callback_data="button3")],
+        [InlineKeyboardButton("Button 4", url="https://example.com")]
+    ]
+    
+    # Kirim foto dengan caption dan tombol
+    message.reply_photo(
+        photo="https://www.example.com/your_photo.jpg",  # Ganti dengan URL foto yang diinginkan
+        caption="Ini adalah caption foto.",
+        reply_markup=InlineKeyboardMarkup(buttons)
     )
-    message.reply_text(help_text)
 
-@app.on_message(filters.command('ch'))
-def set_channel_source_handler(client, message):
-    if message.chat.type == 'private':
-        parts = message.text.split(' ', 2)
-        if len(parts) == 3 and parts[2].startswith("-100"):
-            keyword = parts[1]
-            channel_id = parts[2]
-            set_channel_source(keyword, channel_id)
-            message.reply_text(f"Channel sumber untuk kunci '{keyword}' telah diset ke {channel_id}.")
-        else:
-            message.reply_text("Format ID channel salah. Gunakan format: /ch <keyword> -100123456789")
-    else:
-        message.reply_text("Perintah ini hanya dapat digunakan dalam chat pribadi.")
+# Fungsi untuk menangani callback query
+@app.on_callback_query()
+def callback_query(client, callback_query):
+    data = callback_query.data
 
-@app.on_message(filters.command('addch'))
-def add_channel_destination_handler(client, message):
-    if message.chat.type == 'private':
-        parts = message.text.split(' ', 2)
-        if len(parts) == 3 and parts[2].startswith("-100"):
-            keyword = parts[1]
-            channel_id = parts[2]
-            add_channel_destination(keyword, channel_id)
-            message.reply_text(f"Channel tujuan untuk kunci '{keyword}' telah ditambahkan: {channel_id}.")
-        else:
-            message.reply_text("Format ID channel salah. Gunakan format: /addch <keyword> -100123456789")
-    else:
-        message.reply_text("Perintah ini hanya dapat digunakan dalam chat pribadi.")
+    # Tombol "Back" untuk kembali ke pesan utama
+    back_button = InlineKeyboardButton("Back", callback_data="back")
 
-@app.on_message(filters.chat(lambda c: c.type == 'channel') & filters.text)
-def forward_message_handler(client, message):
-    for keyword in db['channels'].find():
-        channel_data = get_channel_data(keyword['_id'])
-        if channel_data and channel_data['source_channel'] == message.chat.id:
-            for destination_channel in channel_data.get('destination_channels', []):
-                try:
-                    client.forward_messages(chat_id=destination_channel, from_chat_id=message.chat.id, message_ids=message.message_id)
-                except Exception as e:
-                    print(f"Error forwarding message to {destination_channel}: {e}")
+    if data == "button1":
+        # Menampilkan teks dengan tombol "Back"
+        callback_query.message.edit_text(
+            "Button 1 pressed.\n\n[Back](https://t.me/your_bot_username?start)",
+            reply_markup=InlineKeyboardMarkup([[back_button]])
+        )
+    elif data == "button2":
+        # Menampilkan teks dengan tombol "Back"
+        callback_query.message.edit_text(
+            "Button 2 pressed.\n\n[Back](https://t.me/your_bot_username?start)",
+            reply_markup=InlineKeyboardMarkup([[back_button]])
+        )
+    elif data == "button3":
+        # Menampilkan foto dengan caption dan tombol "Back"
+        callback_query.message.edit_photo(
+            photo="https://www.example.com/another_photo.jpg",  # Ganti dengan URL foto yang diinginkan
+            caption="Ini adalah caption foto kedua.\n\n[Back](https://t.me/your_bot_username?start)",
+            reply_markup=InlineKeyboardMarkup([[back_button]])
+        )
+    elif data == "back":
+        # Kembali ke pesan utama
+        callback_query.message.edit_photo(
+            photo="https://www.example.com/your_photo.jpg",  # URL foto utama
+            caption="Ini adalah caption foto.",
+            reply_markup=InlineKeyboardMarkup([
+                [InlineKeyboardButton("Button 1", callback_data="button1")],
+                [InlineKeyboardButton("Button 2", callback_data="button2")],
+                [InlineKeyboardButton("Button 3", callback_data="button3")],
+                [InlineKeyboardButton("Button 4", url="https://example.com")]
+            ])
+        )
 
 app.run()
