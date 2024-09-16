@@ -1,6 +1,7 @@
 from pyrogram import Client, filters
+from config import API_ID, API_HASH
 
-app = Client("my_bot", api_id="YOUR_API_ID", api_hash="YOUR_API_HASH")
+app = Client("my_bot", api_id="API_ID", api_hash="API_HASH")
 
 # Daftar untuk menyimpan ID channel
 channel_ids = []
