@@ -1,5 +1,12 @@
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+from pymongo import MongoClient
+from pymongo.errors import DuplicateKeyError
+import os
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 api_id = "29726374"
 api_hash = "ee797487083e78676bc682c2e78df5fc"
