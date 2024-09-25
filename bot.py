@@ -110,7 +110,10 @@ def delete_forward_id(client, message):
     else:
         message.reply_text("Gunakan format: /deladdch [id_forward]")
 
-@app.on_message(filters.incoming & ~filters.command)
+# Perbaikan di sini
+@app.on_message(filters.incoming & ~filters.command("addch") & ~filters.command("ch") & 
+                ~filters.command("bt") & ~filters.command("listch") & ~filters.command("listaddch") & 
+                ~filters.command("delch") & ~filters.command("deladdch"))
 async def auto_forward(client, message):
     forward_ids = [fwd["_id"] for fwd in forward_collection.find()]
     if str(message.chat.id) in forward_ids:
