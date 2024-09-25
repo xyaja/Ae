@@ -20,7 +20,7 @@ async def start_command(client, message):
     # Mengirim foto dengan caption dan tombol
     await client.send_photo(
         chat_id=message.chat.id,
-        photo=photo_url,
+        photo=photo,
         caption="Ini adalah foto dengan tombol. Silakan pilih:",
         reply_markup=keyboard
     )
