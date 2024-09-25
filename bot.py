@@ -1,10 +1,9 @@
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-from config import *
 
-api_id = "API_ID"
-api_hash = "API_HASH"
-bot_token = "BOT_TOKEN"
+api_id = "29726374"
+api_hash = "ee797487083e78676bc682c2e78df5fc"
+bot_token = "7076412312:AAEuWXMtJaNldQq012gXShXBgX3TPq-WUZY"
 
 app = Client("my_bot", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
 
