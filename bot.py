@@ -5,6 +5,9 @@ api_id = "29726374"
 api_hash = "ee797487083e78676bc682c2e78df5fc"
 bot_token = "7076412312:AAEuWXMtJaNldQq012gXShXBgX3TPq-WUZY"
 
+app = Client("my_bot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
+
+
 @app.on_message(filters.command("start"))
 async def start_command(client, message):
     # URL foto yang akan dikirim
