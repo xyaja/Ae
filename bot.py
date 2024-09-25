@@ -8,7 +8,7 @@ bot_token = "7076412312:AAEuWXMtJaNldQq012gXShXBgX3TPq-WUZY"
 @app.on_message(filters.command("start"))
 async def start_command(client, message):
     # URL foto yang akan dikirim
-    photo_url = "https://example.com/your_photo.jpg"
+    photo = "qris.jpg"
     
     # Membuat keyboard inline
     keyboard = InlineKeyboardMarkup([
